@@ -18,6 +18,7 @@ alias df="df -h"
 alias free="free -h"
 alias mci="sudo make clean install"
 alias mc="make clean"
+alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 
 # Basic auto/tab complete:
 autoload -U compinit

@@ -11,7 +11,7 @@
 let mapleader=" "
 
 " Install Plugins
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.local/share/nvim/plugged')
 " Utility
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " Asynchronus color highlighting
 Plug 'tpope/vim-surround' " Change surrounds

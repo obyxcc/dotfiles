@@ -18,10 +18,10 @@ export READER="zathura"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
-# export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # This line will break some DMs.
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # This line will break some DMs.
 export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"
 export LESSHISTFILE="-"
-# export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
+export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 export ALSA_CONFIG_PATH="$XDG_CONFIG_HOME/alsa/asoundrc"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
@@ -30,6 +30,8 @@ export PASSWORD_STORE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/password-store"
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
 export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+export HISTFILE="$XDG_STATE_HOME"/zsh/history
 
 # NNN Settings
 export NNN_OPTS="deHrxu"
