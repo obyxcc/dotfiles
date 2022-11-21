@@ -1,0 +1,84 @@
+(defwidget controls []
+  (box :class "controls"
+       :orientation "v"
+       :space-evenly false
+       :spacing 7
+       :hexpand true
+    (box :class "header"
+         :orientation "h"
+         :hexpand true
+         :halign "start"
+      (label :text "Controls")
+    )
+    (box :class "content"
+         :orientation "v"
+         :halign "center"
+         :space-evenly true
+         :spacing 12
+      (box :orientation "h"
+           :space-evenly "false"
+           :class "disk-slider"
+        (box :class "disk-label"
+          ""
+        )
+        (progress :value disk
+               :min 0
+               :max 101)
+      )
+      (box :orientation "h"
+           :space-evenly "false"
+           :class "vol-slider"
+        (box :class "vol-label"
+              volume_icon
+        )
+        (scale :value volume_value
+               :onchange "~/.config/eww/scripts/volume.sh set {}"
+               :min 0
+               :max 101)
+      )
+      (box :orientation "h"
+           :space-evenly "false"
+           :class "br-slider"
+        (box :class "br-label"
+              br_icon
+        )
+        (scale :value "${br}"
+               :onchange "light -S {}"
+               :min 0
+               :max 101)
+      )
+    )
+  )
+)
+
+(defwidget cal []
+  (box :class "cal-box"
+       :orientation "h"
+       :space-evenly true
+       :hexpand true
+    (calendar :class "cal"
+              :day calendar_day
+              :month calendar_month
+              :year calendar_year)
+  )
+)
+
+(defwidget dashboard []
+  (box :class "dashboard"
+       :orientation "v"
+       :space-evenly false
+       :spacing 12
+    (cal)
+    (controls)
+  )
+)
+
+(defwindow dashboard
+  :geometry (geometry :x "-6px"
+                      :y "36px"
+                      :width "320px"
+                      :height "0px"
+                      :anchor "top right")
+  :wm-ignore true
+  :type "dock"
+(dashboard))
