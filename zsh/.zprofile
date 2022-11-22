@@ -32,6 +32,7 @@ export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
 export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export HISTFILE="$XDG_STATE_HOME"/zsh/history
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
 
 # NNN Settings
 export NNN_OPTS="deHrxu"

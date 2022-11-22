@@ -5,6 +5,6 @@ do
 		"y")
 			echo -n "$file" | xclip -selection clipboard ;;
 		"w")
-			ln -sf "$file" $HOME/.wall && xwallpaper --zoom "$HOME/.wall" ;;
+			ln -sf "$file" $HOME/.config/wall && xwallpaper --zoom "$HOME/.wall" ;;
 	esac
 done
