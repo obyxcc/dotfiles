@@ -6,7 +6,7 @@
 # to clean up.
 
 # Adds `~/.local/bin` to $PATH
-export PATH="$PATH:$(du "$HOME/.local/bin" | cut -f2 | tr '\n' ':' | sed 's/:*$//'):$HOME/.local/appimage"
+export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
 
 # Default programs:
 export EDITOR="nvim"

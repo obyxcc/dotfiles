@@ -1,11 +1,9 @@
 #!/bin/bash
 
-# @requires: pactl
-
-SINK=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{ print $2 * 100 }')
+# @requires: wireplumber
 
 percentage () {
-  local val=$(echo $1 | tr '%' ' ' | awk '{print $1}')
+  local val=$1
   local icon1=$2
   local icon2=$3
   local icon3=$4
@@ -26,18 +24,18 @@ is_muted () {
 }
 
 get_percentage () {
-  local muted=$(is_muted)
+  # local muted=$(is_muted)
   if [[ $muted == 'yes' ]]; then
-    echo 0%
+    echo 0
   else
-    per=$(pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,')
-    echo "${per}%"
+    per=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{ print $2 * 100 }')
+    echo "${per}"
   fi
 }
 
 get_icon () {
   local vol=$(get_percentage)
-  if [[ $vol == "0%" ]]; then
+  if [[ $vol == "0" ]]; then
     echo "婢"
   else
     echo $(percentage "$vol" "" "" "墳" "")
@@ -46,7 +44,7 @@ get_icon () {
 
 get_class () {
   local vol=$(get_percentage)
-  if [[ $vol == "0%" ]]; then
+  if [[ $vol == "0" ]]; then
     echo "red"
   else
     echo $(percentage "$vol" "red" "magenta" "yellow" "blue")
@@ -55,7 +53,7 @@ get_class () {
 
 get_vol () {
   local percent=$(get_percentage)
-  echo $percent | tr -d '%'
+  echo $percent
 }
 
 if [[ $1 == "icon" ]]; then
@@ -83,9 +81,9 @@ if [[ $1 == "toggle-muted" ]]; then
 fi
 
 if [[ $1 == "set" ]]; then
-  val=$(echo $2 | tr '.' ' ' | awk '{print $1}')
+  val=$(echo $2 | tr '.' ' ' | awk '{print $1 / 100}')
   if test $val -gt 100; then
     val=100
   fi
-  pactl set-sink-volume $SINK $val%
+  wpctl set-volume @DEFAULT_AUDIO_SINK@ $val
 fi

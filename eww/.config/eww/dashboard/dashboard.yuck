@@ -17,16 +17,6 @@
          :spacing 12
       (box :orientation "h"
            :space-evenly "false"
-           :class "disk-slider"
-        (box :class "disk-label"
-          ""
-        )
-        (progress :value disk
-               :min 0
-               :max 101)
-      )
-      (box :orientation "h"
-           :space-evenly "false"
            :class "vol-slider"
         (box :class "vol-label"
               volume_icon
@@ -43,7 +33,7 @@
               br_icon
         )
         (scale :value "${br}"
-               :onchange "light -S {}"
+               :onchange "xbacklight -set {}"
                :min 0
                :max 101)
       )
@@ -67,15 +57,15 @@
   (box :class "dashboard"
        :orientation "v"
        :space-evenly false
-       :spacing 12
-    (cal)
+       :spacing 16
     (controls)
+    (cal)
   )
 )
 
 (defwindow dashboard
-  :geometry (geometry :x "-6px"
-                      :y "36px"
+  :geometry (geometry :x "-11px"
+                      :y "47px"
                       :width "320px"
                       :height "0px"
                       :anchor "top right")

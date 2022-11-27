@@ -3,7 +3,7 @@
 # @requires: brightnessctl
 
 percentage () {
-  local val=$(echo $1 | tr '%' ' ' | awk '{print $1}')
+  local val=$1
   local icon1=$2
   local icon2=$3
   local icon3=$4
@@ -20,7 +20,7 @@ percentage () {
 }
 
 get_brightness () {
-  (( br = $(brightnessctl get) * 100 / $(brightnessctl max) ))
+  br=$(xbacklight -get | cut -c -2)
   echo $br
 }
 
@@ -46,5 +46,5 @@ if [[ $1 == "icon" ]]; then
 fi
 
 if [[ $1 == "set" ]]; then
-  light -S $2
+  xbacklight -set $2
 fi
