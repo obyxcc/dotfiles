@@ -20,19 +20,31 @@ Plug 'tpope/vim-eunuch' " Add unix commands to vim
 Plug 'tpope/vim-fugitive' " Git control
 Plug 'itchyny/lightline.vim' " Statusline
 Plug 'alvan/vim-closetag' " Auto close tags
-Plug 'vim-scripts/auto-pairs' " Generate auto pairs
 Plug 'airblade/vim-gitgutter' " Show git diff info in gutter
 Plug 'vimwiki/vimwiki' " Maintain your own wiki
 Plug 'junegunn/fzf.vim' " Fuzzy search files
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Conquer of Completion
-Plug 'joshdick/onedark.vim' " Color scheme
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'jelera/vim-javascript-syntax' " Better JavaScript syntax
 Plug 'preservim/nerdtree' " Nerdtree
 call plug#end()
 
 " CoC Settings
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+let g:coc_global_extensions = [
+			\ 'coc-spell-checker',
+      \ 'coc-pairs',
+			\ 'coc-emmet',
+			\ 'coc-eslint',
+			\ 'coc-prettier',
+			\ 'coc-html',
+			\ 'coc-css',
+			\ 'coc-tsserver',
+			\ 'coc-json',]
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 command! -nargs=0 Prettier :CocCommand prettier.formatFile " set format command
 
 " The basics
@@ -43,6 +55,7 @@ set number relativenumber
 set nobackup
 set nowritebackup
 set termguicolors
+set signcolumn=yes
 filetype plugin indent on
 
 " Save file as sudo when no sudo permissions
@@ -60,7 +73,7 @@ set showtabline=2  " Show tabline
 set guioptions-=e  " Don't use GUI tabline
 set noshowmode " Turn of showing of mode
 let g:lightline = {
-			\   'colorscheme': 'catppuccin',
+	\   'colorscheme': 'catppuccin',
   \   'active': {
   \     'left':[ [ 'mode', 'paste' ],
   \              [ 'gitbranch', 'readonly', 'filename', 'modified' ]
@@ -83,11 +96,6 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
-" Remap resizing splits
-nnoremap <silent> <C-S-right> :vertical resize +2
-nnoremap <silent> <C-S-down> :resize +2
-nnoremap <silent> <C-S-up> :resize -2
-nnoremap <silent> <C-S-left> :vertical resize -2
 
 " Clear search highlighting with Escape key
 nnoremap <silent><esc> :noh<return><esc>
@@ -100,8 +108,6 @@ let g:vimwiki_list = [{'path': '~/.local/share/vimwiki/',}]"
 
 " Nerdtree Settings
 nnoremap <leader>n :NERDTreeToggle<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeFocus<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
 let g:NERDTreeDirArrowExpandable = '▸'
@@ -121,7 +127,7 @@ set splitbelow splitright
 autocmd BufWritePre * %s/\s\+$//e
 
 " Vertically center document when entering insert mode
-" autocmd InsertEnter * norm zz
+autocmd InsertEnter * norm zz
 
 " Fix indenting visual block
 vmap < <gv
@@ -144,14 +150,6 @@ autocmd BufWritePost *.ms !groff -ms ./*.ms -T pdf > %:r.pdf
 
 " Vim Hexokinase
 let g:Hexokinase_highlighters = [ 'backgroundfull' ]
-" let g:Hexokinase_highlighters = [
-" \   'virtual',
-" \   'sign_column',
-" \   'background',
-" \   'backgroundfull',
-" \   'foreground',
-" \   'foregroundfull'
-" \ ]
 
 " pattern to look for
 let g:Hexokinase_optInPatterns = [

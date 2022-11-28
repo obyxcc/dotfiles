@@ -24,16 +24,16 @@
     # dynamic width from 0 to 300
     # width = (0, 300)
     # constant width of 300
-    width = 300
+    width = 450
 
     # The maximum height of a single notification, excluding the frame.
     height = 300
 
     # Position the notification in the top right corner
-    origin = top-right
+    origin = bottom-right
 
     # Offset from the origin
-    offset = 6x47
+    offset = 6x6
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -116,7 +116,7 @@
 
     ### Text ###
 
-    font = Montserrat 14
+    font = Montserrat 10
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
@@ -207,7 +207,7 @@
     min_icon_size = 32
 
     # Scale larger icons down to this size, set to 0 to disable
-    max_icon_size = 128
+    max_icon_size = 32
 
     # Paths to default icons (only neccesary when not using recursive icon lookup)
     icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
@@ -303,18 +303,18 @@
     per_monitor_dpi = false
 
 # Defines color of the frame around the notification window.
-frame_color = "#8CAAEE"
+frame_color = "#1E1E2E"
 
 [urgency_low]
-background = "#303446"
+background = "#1E1E2E"
 foreground = "#C6D0F5"
 
 [urgency_normal]
-background = "#303446"
+background = "#1E1E2E"
 foreground = "#C6D0F5"
 
 [urgency_critical]
-background = "#303446"
+background = "#1E1E2E"
 foreground = "#C6D0F5"
 frame_color = "#EF9F76"
 
