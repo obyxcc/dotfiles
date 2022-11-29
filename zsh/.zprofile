@@ -30,9 +30,9 @@ export PASSWORD_STORE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/password-store"
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
 export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
-export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
-export HISTFILE="$XDG_STATE_HOME"/zsh/history
-export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export HISTFILE="$XDG_CACHE_HOME/zsh/history"
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 
 # NNN Settings
 export NNN_OPTS="deHrxu"
@@ -47,6 +47,9 @@ export FZF_DEFAULT_OPTS=" \
 --color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284 \
 --color=fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf \
 --color=marker:#f2d5cf,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284"
+
+# bat theme
+export BAT_THEME="Catppuccin-frappe"
 
 # Other program settings:
 export DICS="/usr/share/stardict/dic/"

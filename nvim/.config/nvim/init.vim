@@ -1,10 +1,13 @@
-"  _   _ ________  _________  _____
-" | | | |_   _|  \/  || ___ \/  __ \
-" | | | | | | | .  . || |_/ /| /  \/
-" | | | | | | | |\/| ||    / | |
-" \ \_/ /_| |_| |  | || |\ \ | \__/\
-"  \___/ \___/\_|  |_/\_| \_| \____/
-"
+let g:startify_custom_header = [
+\'   ::::    ::: :::::::::: ::::::::  :::     ::: ::::::::::: ::::    ::::    ',
+\'   :+:+:   :+: :+:       :+:    :+: :+:     :+:     :+:     +:+:+: :+:+:+   ',
+\'   :+:+:+  +:+ +:+       +:+    +:+ +:+     +:+     +:+     +:+ +:+:+ +:+   ',
+\'   +#+ +:+ +#+ +#++:++#  +#+    +:+ +#+     +:+     +#+     +#+  +:+  +#+   ',
+\'   +#+  +#+#+# +#+       +#+    +#+  +#+   +#+      +#+     +#+       +#+   ',
+\'   #+#   #+#+# #+#       #+#    #+#   #+#+#+#       #+#     #+#       #+#   ',
+\'   ###    #### ########## ########      ###     ########### ###       ###   ',
+\ ]
+
 " obyx's vimrc
 " https://gitlab.com/obyx/dotfiles
 
@@ -14,6 +17,7 @@ let mapleader=" "
 call plug#begin('~/.local/share/nvim/plugged')
 " Utility
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " Asynchronus color highlighting
+Plug 'mhinz/vim-startify' " Start screen
 Plug 'tpope/vim-surround' " Change surrounds
 Plug 'tpope/vim-commentary' " Comment/uncomment lines or blocks
 Plug 'tpope/vim-eunuch' " Add unix commands to vim
@@ -22,11 +26,14 @@ Plug 'itchyny/lightline.vim' " Statusline
 Plug 'alvan/vim-closetag' " Auto close tags
 Plug 'airblade/vim-gitgutter' " Show git diff info in gutter
 Plug 'vimwiki/vimwiki' " Maintain your own wiki
-Plug 'junegunn/fzf.vim' " Fuzzy search files
+Plug 'nvim-lua/plenary.nvim' " Dep for telescope
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' } " Fuzzy file search
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Conquer of Completion
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'jelera/vim-javascript-syntax' " Better JavaScript syntax
 Plug 'preservim/nerdtree' " Nerdtree
+Plug 'ryanoasis/vim-devicons' " Nerdtree icons
+Plug 'Xuyuanp/nerdtree-git-plugin' " Nerdtree git
 call plug#end()
 
 " CoC Settings
@@ -109,6 +116,7 @@ let g:vimwiki_list = [{'path': '~/.local/share/vimwiki/',}]"
 " Nerdtree Settings
 nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
+let g:NERDTreeGitStatusUseNerdFonts = 1
 
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
@@ -117,8 +125,11 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
     \ quit | endif
 
-" FZF Settings
-nnoremap <leader>f :Files<CR>
+" Telescope Settings
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " Fix splits
 set splitbelow splitright
@@ -143,7 +154,7 @@ nnoremap th :tabfirst<CR>
 nnoremap tl :tablast<CR>
 
 " Compile SASS
-" autocmd BufWritePost *.sass,*.scss !sass ./*.s*ss ./main.css
+autocmd BufWritePost *.sass,*.scss !sass ./*.s*ss ./main.css
 
 " Compile Groff MS to PDF
 autocmd BufWritePost *.ms !groff -ms ./*.ms -T pdf > %:r.pdf
