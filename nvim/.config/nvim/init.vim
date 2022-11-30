@@ -15,7 +15,6 @@ let mapleader=" "
 
 " Install Plugins
 call plug#begin('~/.local/share/nvim/plugged')
-" Utility
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " Asynchronus color highlighting
 Plug 'mhinz/vim-startify' " Start screen
 Plug 'tpope/vim-surround' " Change surrounds
@@ -28,6 +27,7 @@ Plug 'airblade/vim-gitgutter' " Show git diff info in gutter
 Plug 'vimwiki/vimwiki' " Maintain your own wiki
 Plug 'nvim-lua/plenary.nvim' " Dep for telescope
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' } " Fuzzy file search
+Plug 'lukas-reineke/indent-blankline.nvim' " Indent guides
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Conquer of Completion
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'jelera/vim-javascript-syntax' " Better JavaScript syntax
@@ -38,20 +38,23 @@ call plug#end()
 
 " CoC Settings
 let g:coc_global_extensions = [
-			\ 'coc-spell-checker',
-      \ 'coc-pairs',
-			\ 'coc-emmet',
-			\ 'coc-eslint',
-			\ 'coc-prettier',
-			\ 'coc-html',
-			\ 'coc-css',
-			\ 'coc-tsserver',
-			\ 'coc-json',]
+	\ 'coc-spell-checker',
+	\ 'coc-pairs',
+	\ 'coc-emmet',
+	\ 'coc-eslint',
+	\ 'coc-prettier',
+	\ 'coc-html',
+	\ 'coc-css',
+	\ 'coc-rls',
+	\ 'coc-clangd',
+	\ 'coc-sh',
+	\ 'coc-tsserver',
+	\ 'coc-json',]
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice.
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+  \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 command! -nargs=0 Prettier :CocCommand prettier.formatFile " set format command
 
 " The basics
@@ -90,7 +93,7 @@ let g:lightline = {
 	\     'lineinfo': ' %3l:%-2v',
 	\   },
   \   'component_function': {
-  \     'gitbranch': 'fugitive#head',
+  \     'gitbranch': 'FugitiveHead',
   \   }
   \ }
 let g:lightline.tabline = {
@@ -117,19 +120,26 @@ let g:vimwiki_list = [{'path': '~/.local/share/vimwiki/',}]"
 nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 let g:NERDTreeGitStatusUseNerdFonts = 1
-
+let g:NERDTreeWinSize=25
+let g:NERDTreeShowHidden=1
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
 " Exit Vim if NERDTree is the only window left.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-    \ quit | endif
+  \ quit | endif
 
 " Telescope Settings
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fr <cmd>Telescope oldfiles<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" Terminal Settings
+tnoremap <Esc> <C-\><C-n>
+map <leader>tt :12new term://zsh<CR>i
+
 
 " Fix splits
 set splitbelow splitright
@@ -164,10 +174,10 @@ let g:Hexokinase_highlighters = [ 'backgroundfull' ]
 
 " pattern to look for
 let g:Hexokinase_optInPatterns = [
-\     'full_hex',
-\     'triple_hex',
-\     'rgb',
-\     'rgba',
-\     'hsl',
-\     'hsla',
-\ ]
+	\     'full_hex',
+	\     'triple_hex',
+	\     'rgb',
+	\     'rgba',
+	\     'hsl',
+	\     'hsla',
+	\ ]
