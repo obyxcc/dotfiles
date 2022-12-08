@@ -20,7 +20,7 @@ percentage () {
 }
 
 get_brightness () {
-  br=$(xbacklight -get | cut -c -2)
+  br=$(xbacklight -get | tr '.' ' ' | awk '{print $1}')
   echo $br
 }
 

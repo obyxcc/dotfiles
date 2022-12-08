@@ -21,6 +21,7 @@ Plug 'tpope/vim-surround' " Change surrounds
 Plug 'tpope/vim-commentary' " Comment/uncomment lines or blocks
 Plug 'tpope/vim-eunuch' " Add unix commands to vim
 Plug 'tpope/vim-fugitive' " Git control
+Plug 'christoomey/vim-tmux-navigator' " tmux navigation
 Plug 'itchyny/lightline.vim' " Statusline
 Plug 'alvan/vim-closetag' " Auto close tags
 Plug 'airblade/vim-gitgutter' " Show git diff info in gutter
@@ -100,12 +101,6 @@ let g:lightline.tabline = {
   \   'left': [ ['tabs'] ],
   \   'right': [ ['close'] ]
   \ }
-
-" Remap switching between splits
-nnoremap <c-h> <c-w>h
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-l> <c-w>l
 
 " Clear search highlighting with Escape key
 nnoremap <silent><esc> :noh<return><esc>
