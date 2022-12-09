@@ -32,4 +32,11 @@ _comp_options+=(globdots)		# Include hidden files.
 # Disable vim mode
 bindkey -e
 
+# launch starship prompt
 eval "$(starship init zsh)"
+
+# start tmux if we ssh into the box
+if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" ]]; then
+    tmux attach-session -t $USER || tmux new-session -s $USER
+fi
+
