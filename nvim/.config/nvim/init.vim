@@ -115,7 +115,6 @@ let g:vimwiki_list = [{'path': '~/.local/share/vimwiki/',}]"
 nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 let g:NERDTreeGitStatusUseNerdFonts = 1
-let g:NERDTreeWinSize=25
 let g:NERDTreeShowHidden=1
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
