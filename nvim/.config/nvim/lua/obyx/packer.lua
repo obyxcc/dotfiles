@@ -57,6 +57,8 @@ return require('packer').startup(function(use)
 
   use { 'tpope/vim-commentary' }
 
+  use { "windwp/nvim-autopairs" }
+
   use { 'christoomey/vim-tmux-navigator' }
 
   use { 'norcalli/nvim-colorizer.lua' }
