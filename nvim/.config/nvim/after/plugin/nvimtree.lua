@@ -33,4 +33,4 @@ vim.api.nvim_create_autocmd("BufEnter", {
   end
 })
 
-vim.keymap.set("n", "<leader>nn", vim.cmd.NvimTreeToggle)
+vim.keymap.set("n", "<C-p>", vim.cmd.NvimTreeToggle)

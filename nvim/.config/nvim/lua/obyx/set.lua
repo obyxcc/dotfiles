@@ -7,7 +7,7 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
 vim.opt.showmode = false
--- vim.opt.cmdheight = 0 -- hide cmdline
+vim.opt.cmdheight = 0 -- hide cmdline
 
 vim.opt.smartindent = true
 
@@ -31,5 +31,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
+
+vim.opt.timeoutlen = 500
 
 vim.opt.colorcolumn = "80"
