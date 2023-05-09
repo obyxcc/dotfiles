@@ -40,7 +40,7 @@ export NNN_OPTS="deHrxu"
 export NNN_TRASH=1
 export NNN_COLORS='#0a1b2c3d;1234'
 export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)$"
-export NNN_BMS='d:~/dls;c:~/.config;r:~/.local/repos;s:~/.config/nnn/mounts;t:~/.local/share/Trash/files;v:~/.local/share/vimwiki;'
+export NNN_BMS='d:~/dls;c:~/.config;r:~/.local/repos;m:~/.config/nnn/mounts;t:~/.local/share/Trash/files;v:~/.local/share/vimwiki;'
 export NNN_PLUG='m:nmount;i:imgview;e:!trash-empty;'
 
 # fzf settings

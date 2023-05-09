@@ -11,7 +11,7 @@ SAVEHIST=10000
 alias ls="ls -Ahl --color"
 alias vim="nvim"
 alias grep="grep --color=auto"
-alias pacclean="paru -Rns $(pacman -Qdtq)"
+alias pacclean="sudo pacman -Rns $(pacman -Qdtq)"
 alias pacup="paru -Syu && pkill -RTMIN+3 dwmblocks"
 alias cp="advcp -rvg"
 alias mv="advmv -vg"
@@ -21,6 +21,7 @@ alias mci="sudo make clean install"
 alias mc="make clean"
 alias wpr="sxiv -t $HOME/pics/wallpapers/*"
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
+alias cava="TERM=st-256color cava"
 
 # Basic auto/tab complete:
 autoload -U compinit

@@ -28,10 +28,6 @@ return require('packer').startup(function(use)
 
   use { "catppuccin/nvim", as = "catppuccin" }
 
-  use { 'glepnir/dashboard-nvim' }
-
-  use { "folke/which-key.nvim" }
-
   use { 'nvim-tree/nvim-tree.lua', requires = { 'nvim-tree/nvim-web-devicons' },
     tag = 'nightly' -- optional, updated every week. (see issue #1193)
   }
@@ -46,7 +42,10 @@ return require('packer').startup(function(use)
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
 
-  use { 'romgrk/barbar.nvim', wants = 'nvim-web-devicons' }
+  use {'romgrk/barbar.nvim', requires = {
+  'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+  'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+  }}
 
   use { 'TimUntersberger/neogit', requires =
   'nvim-lua/plenary.nvim',
