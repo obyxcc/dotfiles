@@ -1,4 +1,7 @@
 require'nvim-treesitter.configs'.setup {
+  -- workaround bug 
+  ignore_install = { 'help' },
+
   -- A list of parser names, or "all"
   ensure_installed = { "c", "lua", "rust", "help", "yaml", "dockerfile", "bash", "vim", "javascript", "typescript", "html", "css", "scss" },
 

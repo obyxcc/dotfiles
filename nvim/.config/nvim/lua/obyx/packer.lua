@@ -5,34 +5,34 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use { 'wbthomason/packer.nvim' }
 
-  use { 'VonHeikemen/lsp-zero.nvim',
-    requires = {
-      -- LSP Support
-      { 'neovim/nvim-lspconfig' },
-      { 'williamboman/mason.nvim' },
-      { 'williamboman/mason-lspconfig.nvim' },
+  -- use { 'VonHeikemen/lsp-zero.nvim',
+  --   requires = {
+  --     -- LSP Support
+  --     { 'neovim/nvim-lspconfig' },
+  --     { 'williamboman/mason.nvim' },
+  --     { 'williamboman/mason-lspconfig.nvim' },
 
-      -- Autocompletion
-      { 'hrsh7th/nvim-cmp' },
-      { 'hrsh7th/cmp-buffer' },
-      { 'hrsh7th/cmp-path' },
-      { 'saadparwaiz1/cmp_luasnip' },
-      { 'hrsh7th/cmp-nvim-lsp' },
-      { 'hrsh7th/cmp-nvim-lua' },
+  --     -- Autocompletion
+  --     { 'hrsh7th/nvim-cmp' },
+  --     { 'hrsh7th/cmp-buffer' },
+  --     { 'hrsh7th/cmp-path' },
+  --     { 'saadparwaiz1/cmp_luasnip' },
+  --     { 'hrsh7th/cmp-nvim-lsp' },
+  --     { 'hrsh7th/cmp-nvim-lua' },
 
-      -- Snippets
-      { 'L3MON4D3/LuaSnip' },
-      { 'rafamadriz/friendly-snippets' },
-    }
-  }
+  --     -- Snippets
+  --     { 'L3MON4D3/LuaSnip' },
+  --     { 'rafamadriz/friendly-snippets' },
+  --   }
+  -- }
 
-  use { "catppuccin/nvim", as = "catppuccin" }
+  use { 'navarasu/onedark.nvim' }
 
   use { 'nvim-tree/nvim-tree.lua', requires = { 'nvim-tree/nvim-web-devicons' },
     tag = 'nightly' -- optional, updated every week. (see issue #1193)
   }
 
-  use { 'nvim-treesitter/nvim-treesitter', run = { ':TSUpdate' } }
+  use { 'nvim-treesitter/nvim-treesitter' }
 
   use { 'nvim-telescope/telescope.nvim', tag = '0.1.0',
     requires = { { 'nvim-lua/plenary.nvim' } }
@@ -43,12 +43,12 @@ return require('packer').startup(function(use)
   }
 
   use {'romgrk/barbar.nvim', requires = {
-  'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
-  'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+    'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+    'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
   }}
 
   use { 'TimUntersberger/neogit', requires =
-  'nvim-lua/plenary.nvim',
+    'nvim-lua/plenary.nvim',
     'sindrets/diffview.nvim'
   }
 
